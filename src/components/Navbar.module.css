@@ -1,0 +1,17 @@
+.link{
+    text-decoration: none;
+    list-style: none;
+    float: left;
+    margin-left: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+.right{
+    text-decoration: none;
+    list-style: none;
+    display: flex; 
+    justify-content: flex-end;
+    margin-right: 50px;
+}

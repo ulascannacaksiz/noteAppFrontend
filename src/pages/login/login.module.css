@@ -1,0 +1,9 @@
+body{
+  overflow: hidden;
+  max-width: 100%;
+}
+.child {
+  position: absolute;
+  top:30%;
+  overflow: hidden;
+  }
