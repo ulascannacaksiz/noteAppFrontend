@@ -2,9 +2,16 @@ import {useState} from "react";
 import styles from './login.module.css';
 import { TextField, Container, Grid,Button } from "@mui/material";
 import axios from "axios"
+import {useSelector,useDispatch} from "react-redux";
+import {setLogin,setToken} from "../../stores/login";
+
 function Login() {
   const[email,setEmail] = useState("");
   const[password,setPassword] = useState("");
+  
+  const {isLoggedIn,token} = useSelector(state=>state.login);
+  const dispatch = useDispatch();
+
   const handleSubmit = ((event)=>{
     event.preventDefault();
     console.log(email);
@@ -15,6 +22,8 @@ function Login() {
     })
     .then(function (response) {
       console.log(response.data.token);
+      dispatch(setLogin());
+      dispatch(setToken(`bearer ${response.data.token}`))
     })
     .catch(function (error) {
       console.log(error.response.data);
@@ -22,7 +31,7 @@ function Login() {
   })
   return (
     <div>
-      
+
       <Container maxWidth="xl">
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}   

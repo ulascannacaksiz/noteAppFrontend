@@ -31,9 +31,9 @@ function Navbar() {
       </div>
 
       <Routes>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="note" element={<Note />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/note" element={<Note />} />
       </Routes>
     </div>
   );

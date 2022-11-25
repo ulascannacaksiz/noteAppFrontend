@@ -1,6 +1,10 @@
 import React from "react";
 import { Card, Stack, Typography, Box, Grid } from "@mui/material";
+import {useSelector,useDispatch} from "react-redux";
 function Notes() {
+
+  const {isLoggedIn,token} = useSelector(state=>state.login);
+  console.log(isLoggedIn);
   return (
     <div>
 
