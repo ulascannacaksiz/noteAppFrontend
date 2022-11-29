@@ -14,7 +14,8 @@ function Login() {
 
   const handleSubmit = ((event)=>{
     event.preventDefault();
-    console.log(email);
+    console.log(isLoggedIn);
+
 
   axios.post('https://localhost:7224/User/Login',  {
       email: email,
