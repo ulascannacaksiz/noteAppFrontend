@@ -4,7 +4,7 @@ import { TextField, Container, Grid, Button } from "@mui/material";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogin, setToken } from "../../stores/login";
-
+import { redirect } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,9 +22,10 @@ function Login() {
         password: password,
       })
       .then(function (response) {
-        console.log(response.data.token);
+        
         dispatch(setLogin());
         dispatch(setToken(`bearer ${response.data.token}`));
+        return redirect("/Note");
       })
       .catch(function (error) {
         console.log(error.response.data);
