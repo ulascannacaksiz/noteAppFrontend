@@ -1,30 +1,36 @@
-import {useState} from "react";
-import { TextField, Container, Grid, Button } from "@mui/material";
+import { useState } from "react";
+import { TextField, Container, Grid, Button, Alert } from "@mui/material";
 import axios from "axios";
 import { useSelector } from "react-redux";
 function AddNote() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const { isLoggedIn, token } = useSelector((state) => state.login);
-    let config = {
-        headers: {
-           Authorization: token
-        }
-     }    
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        axios
-          .post("https://localhost:7224/Note/Notes", {
-            title: title,
-            description: description,
-          },config)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error.response.data);
-          });
-      };
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [responseMsg, setResponseMsg] = useState("");
+
+  const { isLoggedIn, token } = useSelector((state) => state.login);
+  let config = {
+    headers: {
+      Authorization: token,
+    },
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(
+        "https://localhost:7224/Note/Notes",
+        {
+          title: title,
+          description: description,
+        },
+        config
+      )
+      .then(function (response) {
+        setResponseMsg(response.data);
+      })
+      .catch(function (error) {
+        setResponseMsg(error.response.data);
+      });
+  };
 
   return (
     <div>
@@ -38,9 +44,14 @@ function AddNote() {
             alignItems="center"
             marginTop={12}
           >
+            {responseMsg && (
+              <Grid item xs={8}>
+                <Alert severity="info">{responseMsg}</Alert>
+              </Grid>
+            )}
             <Grid item xs={8}>
               <TextField
-                fullWidth 
+                fullWidth
                 id="standard-multiline-static"
                 label="Not Başlığı"
                 variant="outlined"
@@ -58,7 +69,7 @@ function AddNote() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
-         </Grid>
+            </Grid>
             <Grid item xs={8}>
               <Button type="submit" variant="outlined" id="btnkaydet">
                 Kaydet

@@ -5,6 +5,7 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import Note from "../pages/note/Notes";
 import AddNote from "../pages/note/AddNote";
+import EditNote from "../pages/note/EditNote";
 function Navbar() {
   return (
     <div>
@@ -40,6 +41,7 @@ function Navbar() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/note" element={<Note />} />
+        <Route path="/editnote/:id" element={<EditNote />} />
         <Route path="/addnote" element={<AddNote />} />
       </Routes>
     </div>

@@ -24,13 +24,10 @@ useEffect(() => {
 }, []);
   return (
     <div>
-      <Grid container spacing={2} mt={2}>
-        
-        
-        
+      <Grid container spacing={2} mt={2}>        
         {
           noteData.map((data,index)=>(
-            <NoteGrid title={data.noteTitle} content={data.noteDescription} key={index}/>
+            <NoteGrid title={data.noteTitle} id={data.noteId} content={data.noteDescription} key={index}/>
           ))
         }
         

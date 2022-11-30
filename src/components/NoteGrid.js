@@ -1,9 +1,11 @@
 import React from 'react'
 import { Card, Stack, Typography, Box, Grid } from "@mui/material";
-function NoteGrid({title,content}) {
+import { Link } from 'react-router-dom';
+function NoteGrid({title,content,id}) {
   return (
     <>
        <Grid item  md={4}>
+       <Link to={`/EditNote/${id}`}>
         <Card>
           <Box sx={{ p: 2, display: "flex" }}>
             <Stack spacing={0.5}>
@@ -14,7 +16,9 @@ function NoteGrid({title,content}) {
             </Stack>
           </Box>
         </Card>
+        </Link>
       </Grid>
+      
       </>
   )
 }
